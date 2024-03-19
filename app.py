@@ -5,27 +5,27 @@ app = Flask(__name__)
 openings = [
   {
     "id": 123,
-    "title": "Software Developer",
-    "location": "Pune, India",
-    "salary": "Rs. 10,00,000"
+    "title": "Dvarapalakas",
+    "location": "Sri Vaikunta Perumal Temple, Uthiramerur",
+    "salary": "Bhagawat Krupa"
   },
   {
     "id": 23,
-    "title": "ML/AI engineer",
-    "location": "Bangalore, India",
-    "salary": "Rs. 18,00,000"
+    "title": "Vishvaksena",
+    "location": "Yoganarasimha swamy Temple, Vaikunta",
+    "salary": "Bhagawat Krupa"
   },
   {
     "id": 28,
-    "title": "Frontend Developer",
-    "location": "Noida, India",
-    "salary": "Rs. 8,00,000"
+    "title": "Sevakas",
+    "location": "Ulagalantha Perumal Temple, Bharat",
+    "salary": "Bhagawat Krupa"
   },
   {
     "id": 96,
-    "title": "DevOps Engineer",
-    "location": "Pune, India",
-    "salary": "Rs. 12,00,000"
+    "title": "Vaisanavas",
+    "location": "Vikuntha Tirtham, Braj",
+    "salary": "Bhagawat Krupa"
   }
 ]
 

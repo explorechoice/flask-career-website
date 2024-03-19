@@ -1,18 +1,18 @@
 <div class="card mb-2" style="width: 100%;">
   <div class="card-body mt-2 mb-2 row justify-content-around">
     <div class="col-10">
-    <h4 class="card-title" style="color:#4a4e69">{{ opening.title }}</h4>
-    <p class="card-subtitle"><strong>Location: </strong>{{ opening.location }}</p>
+    <h4 class="card-title" style="color:#f72585">{{ opening.title }}</h4>
+    <p class="card-subtitle fs-5"><strong>Location: </strong>{{ opening.location }}</p>
     {% if opening.salary %}
-    <p class="card-subtitle">
+    <p class="card-subtitle fs-6 text-muted">
       <strong>Salary: </strong>
       {{ opening.salary }}
     </p>
     {% endif %}
     <a href="#" class=""></a>
     </div>
-    <div class="m-auto col-2 items-center">
-      <button type="button" class="btn btn-outline-primary">Apply</button>
+    <div class="m-auto col-2 p-2 items-center">
+      <a href="mailto:lets.code@yahoo.com?subject={{ opening.title }}&body={{ opening.location }} {{ opening.salary }}" type="button" class="btn btn-outline-primary">Apply</a>
     </div>
   </div>
   
