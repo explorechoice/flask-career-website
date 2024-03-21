@@ -1,6 +1,5 @@
-from flask import Flask, render_template, jsonify
-
-from database import load_openings_from_db, load_openings
+from database import load_openings, load_openings_from_db
+from flask import Flask, jsonify, render_template
 
 app = Flask(__name__)
 

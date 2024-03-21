@@ -1,11 +1,12 @@
 #https://planetscale.com/blog/using-mysql-with-sql-alchemy-hands-on-examples
+import json
+import os
+from datetime import date, datetime
+
 import sqlalchemy
 from sqlalchemy import create_engine, text
-import os
-import json
 
 version = sqlalchemy.__version__
-print(version)
 
 # we need to connect to our MySQL database hosted on 
 # https://console.aiven.io/account/a49f42ba3bcb/project/sharma-4204/services/mysql-vaikuntha/overview
@@ -20,11 +21,8 @@ connection_string = os.environ['DB_CONNECTION_STRING']
 engine = create_engine(connection_string, echo=True)
 
 
-from datetime import date, datetime
-
 def json_serial(obj):
     """JSON serializer for objects not serializable by default json code"""
-
     if isinstance(obj, (datetime, date)):
         return obj.isoformat()
     raise TypeError ("Type %s not serializable" % type(obj))
