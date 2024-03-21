@@ -4,16 +4,29 @@
     <div class="container my-5" id="about">
       <div class="row p-4 pb-4 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow">
         <small class="text-uppercase">Job Posted On </small>
-        <small class="bg-primary fw-bold" style="color:white">{{ opening.created_at }}</small>
+        <small class="bg-primary" style="color:white">{{ opening.created_at }}</small>
         <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
           <h1 class="display-6 fw-bold text-body-emphasis">{{ opening.title }}</h1>
           <!-- <p class="lead">{{ opening.title }}</p> -->
-          <h4 class="display-6 text-body-emphasis">Location</h4>
+          <!-- <h4 class="display-6 text-body-emphasis">Location</h4> -->
           <p class="lead">{{ opening.location }}</p>
           <h4 class="display-6 text-body-emphasis">Requirements</h4>
-          <p class="lead">{{ opening.requirements }}</p>
+          <ul class="lead">
+            {% for line in opening.requirements.split("\n") %}
+            <li>
+              {{ line }}
+            </li>
+            {% endfor %}
+          </ul>
           <h4 class="display-6 text-body-emphasis">Responsibilities</h4>
-          <p class="lead">T{{ opening.responsibilities}}</p>
+          <ul class="lead">
+            {% for line in opening.responsibilities.split("\n") %}
+            <li>
+              {{ line }}
+            </li>
+            {% endfor %}
+          </ul>
+          <!-- <p class="lead">T{{ opening.responsibilities}}</p> -->
         </div>
         <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
             <img class="rounded-lg-3" src="{{ url_for('static', filename='aboutuscareer.jpeg')}}" alt="" width="600">
