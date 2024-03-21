@@ -37,6 +37,16 @@ def load_openings_from_db():
       openings.append(row_as_dict)
   return openings
 
+def load_openings_by_id(id):
+  with engine.connect() as connection:
+    result = connection.execute(text("SELECT * FROM jobs WHERE id = :val"), parameters=dict(val=id))
+    result_all = result.all()[0]
+    print(result_all)
+    if len(result_all) != 0:
+      return dict(result_all._mapping)
+    else:
+      return None
+
 def load_openings():
   openings = []
   with engine.connect() as connection:

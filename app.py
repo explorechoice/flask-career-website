@@ -1,4 +1,4 @@
-from database import load_openings, load_openings_from_db
+from database import load_openings, load_openings_from_db, load_openings_by_id
 from flask import Flask, jsonify, render_template
 
 app = Flask(__name__)
@@ -40,6 +40,13 @@ def list_jobs():
 def home():
   openings = load_openings_from_db()
   return render_template(template_name_or_list='home.html', openings=openings)
+
+
+@app.route("/api/job/<id>")
+def get_job(id):
+  openings = load_openings_by_id(id)
+  return jsonify(openings)
+
 
 
 if __name__ == "__main__":
