@@ -22,56 +22,40 @@
       font-size: medium;
       color: #f72585;
     }
-
-    /* .text-primary {
-      color: #480ca8;
-    }
-
-    .btn-primary {
-      background: #480ca8;
-    }
-
-    .active {
-      background: #480ca8;
-    } */
-    
   </style>
-  
+
 </head>
 <body>
 <!--Navbar Start !-->
   {% include 'navbar.html' %}
   <!--Navbar End !-->
-  <div class="px-4 pt-5 my-5 text-center border-bottom">
-    <h1 class="display-4 fw-bold text-body-emphasis">Careers Page</h1>
-    <div class="col-lg-6 mx-auto">
-      <p class="lead mb-4">In Vaikunthaloka there is no occupation but the service of the Lord, and this service is not rendered with a purpose. Although every service has a particular result, the devotees never aspire for the fulfillment of their own desires; their desires are fulfilled by rendering transcendental loving service to the Lord. <em class="text-important">(Bhag. 3.15.14, purport)</em></p>
-    </div>
-    <div class="overflow-hidden" style="max-height: 40vh;">
-      <div class="container px-5">
-        <img src="{{ url_for('static', filename='musicplayers.jpeg') }}" class="img-fluid border rounded-3 shadow-lg mb-5 bg-body-tertiary" alt="Example image" width="700" height="500" loading="lazy">
-      </div>
-    </div>
-  </div>
+
   <div class="container">
     <div class="container my-5" id="about">
-      <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow">
+      <div class="row p-4 pb-4 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow">
+        <small class="text-uppercase">Job Posted On </small>
+        <small class="bg-primary fw-bold" style="color:white">{{ opening.created_at }}</small>
         <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
-          <h1 class="display-6 fw-bold lh-1 text-body-emphasis">Who are we?</h1>
-          <p class="lead">It is also generally accepted that the highest and most perfect devotees are the residents of the spiritual world. So, they are certainly the most dear to the Lord. Throughout sastra the spiritual world is referred to as perfect, infallible and eternally blissful.
-            All the eternally perfected devotees have eternal and blissful qualities just like Lord Mukunda. Their supreme love for Krsna is millions and missions of times more than their love for their own self or body. <em class="text-important">(Brs. 2.1.290)</em></p>
+          <h1 class="display-6 fw-bold text-body-emphasis">{{ opening.title }}</h1>
+          <!-- <p class="lead">{{ opening.title }}</p> -->
+          <h4 class="display-6 text-body-emphasis">Location</h4>
+          <p class="lead">{{ opening.location }}</p>
+          <h4 class="display-6 text-body-emphasis">Requirements</h4>
+          <p class="lead">{{ opening.requirements }}</p>
+          <h4 class="display-6 text-body-emphasis">Responsibilities</h4>
+          <p class="lead">{{ opening.responsibilities}}</p>
         </div>
         <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
             <img class="rounded-lg-3" src="{{ url_for('static', filename='careeraboutus.jpeg')}}" alt="" width="600">
         </div>
+        <div class="m-auto col-2 p-2 items-center">
+          <a href="mailto:lets.code@yahoo.com?subject={{ opening.title }}&body={{ opening.location }} {{ opening.salary }}" type="button" class="btn-outline-primary btn btn-lg text-uppercase">Apply</a>
+        </div>
       </div>
     </div>
-    <div class="lead" id="openings">
-      <h2 class="text-center mt-2 mb-4 display-6 fw-bold lh-1 text-body-emphasis">Jobs Opening</h2>
-      {% for opening in openings %}
-      {% include 'openings.html' %}
-      {% endfor %}
-    </div>
+
+    
+    
     <div id="contact" style="text-align: center; margin-bottom: 32px; margin-top: 32px" >
       <h2 class="text-center mt-2 mb-4 display-6 fw-bold lh-1 text-body-emphasis">Get In Touch</h2>
       <p class="lead">If you have any queries, feel free to hit contact button to send out email</p>

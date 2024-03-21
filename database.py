@@ -37,6 +37,15 @@ def load_openings_from_db():
       openings.append(row_as_dict)
   return openings
 
+def load_job_from_db(id):
+  with engine.connect() as connection:
+    result = connection.execute(text("SELECT * FROM jobs WHERE id = :val"), parameters=dict(val=id))
+    result_all = result.all()[0]
+    if len(result_all) != 0:
+      return dict(result_all._mapping)
+    else:
+      return None
+
 def load_openings_by_id(id):
   with engine.connect() as connection:
     result = connection.execute(text("SELECT * FROM jobs WHERE id = :val"), parameters=dict(val=id))
@@ -47,6 +56,9 @@ def load_openings_by_id(id):
     else:
       return None
 
+
+#https://github.com/encode/databases/issues/375
+#https://stackoverflow.com/questions/11875770/how-can-i-overcome-datetime-datetime-not-json-serializable
 def load_openings():
   openings = []
   with engine.connect() as connection:
