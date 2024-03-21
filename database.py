@@ -1,6 +1,7 @@
 #https://planetscale.com/blog/using-mysql-with-sql-alchemy-hands-on-examples
 import sqlalchemy
 from sqlalchemy import create_engine, text
+import os
 
 version = sqlalchemy.__version__
 print(version)
@@ -13,7 +14,7 @@ print(version)
 
 # You'll need to install your driver with pip.
 
-connection_string = "mysql+pymysql://user:password@mysql-vaikuntha-sharma-4204.a.aivencloud.com:15390/defaultdb"
+connection_string = os.environ['DB_CONNECTION_STRING']
 
 engine = create_engine(connection_string, echo=True)
 
