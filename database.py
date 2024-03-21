@@ -2,6 +2,7 @@
 import sqlalchemy
 from sqlalchemy import create_engine, text
 import os
+import json
 
 version = sqlalchemy.__version__
 print(version)
@@ -18,6 +19,16 @@ connection_string = os.environ['DB_CONNECTION_STRING']
 
 engine = create_engine(connection_string, echo=True)
 
+
+from datetime import date, datetime
+
+def json_serial(obj):
+    """JSON serializer for objects not serializable by default json code"""
+
+    if isinstance(obj, (datetime, date)):
+        return obj.isoformat()
+    raise TypeError ("Type %s not serializable" % type(obj))
+
 def load_openings_from_db():
   openings = []
   with engine.connect() as connection:
@@ -25,7 +36,6 @@ def load_openings_from_db():
     result_all = result.all()
     for row in result_all:
       row_as_dict = row._mapping
-      print(row_as_dict)
       openings.append(row_as_dict)
   return openings
 
@@ -35,7 +45,11 @@ def load_openings():
     result = connection.execute(text("SELECT * FROM jobs"))
     result_all = result.all()
     for row in result_all:
-      row_as_dict = row._mapping
-      print(f'row_as_dict: {(row_as_dict)}')
-      openings.append((row_as_dict))
+      row_as_dict = dict(row._mapping)
+      print(f'row_mapping: {row_as_dict}')
+      json_r = json.dumps(row_as_dict, default=json_serial)
+      print(f'dump data: {row_as_dict}')
+      load_r = json.loads(json_r)
+      print(f'row_as_dict: {(load_r)}')
+      openings.append((load_r))
   return openings

@@ -1,5 +1,7 @@
 from flask import Flask, render_template, jsonify
 
+from database import load_openings_from_db, load_openings
+
 app = Flask(__name__)
 
 openings = [
@@ -31,11 +33,13 @@ openings = [
 
 @app.route("/api/jobs")
 def list_jobs():
+  openings = load_openings()
   return jsonify(openings)
 
 
 @app.route("/")
 def home():
+  openings = load_openings_from_db()
   return render_template(template_name_or_list='home.html', openings=openings)
 
 
