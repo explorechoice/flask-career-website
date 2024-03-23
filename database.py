@@ -73,3 +73,10 @@ def load_openings():
       print(f'row_as_dict: {(load_r)}')
       openings.append((load_r))
   return openings
+
+
+def store_data_into_db(job_id, data):
+  with engine.connect() as connection:
+    query = text("INSERT INTO applications (job_id, full_name, email, linkedin_url, education, work_experience, resume_url) VALUES (:job_id, :full_name, :email, :linkedin_url, :education, :work_experience, :resume_url)")
+    connection.execute(query, parameters=dict(job_id=job_id, full_name=data['fullname'], email=data['email'], linkedin_url=data['linkedinurl'], education=data['education'], work_experience=data['experience'], resume_url=data['resumeurl']))
+    connection.commit()

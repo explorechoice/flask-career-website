@@ -1,0 +1,32 @@
+<div class="container my-5 lead">
+  <h1 class="display-6 fw-bold text-body-emphasis">Application Form</h1>
+  <form class="mx-16" action="/job/{{ opening.id }}/apply" method="post">
+    <div class="mb-3">
+      <label for="fullname" class="form-label">Full Name</label>
+      <input type="fullname" class="form-control" id="fullname" name="fullname">
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
+      <div id="emailHelp" class="form-text "><small>We'll never share your email with anyone else.</small></div>
+    </div>
+    <div class="mb-3">
+      <label for="education" class="form-label">Education</label>
+      <textarea class="form-control" name="education" id="education"></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="experience" class="form-label">Experience</label>
+      <textarea type="email" class="form-control" name="experience" id="experience" aria-describedby="emailHelp"></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="linkedinurl" class="form-label">Linkedin URL</label>
+      <input type="linkedinurl" class="form-control" name="linkedinurl" id="linkedinurl" aria-describedby="emailHelp"/>
+    </div>
+    <div class="mb-3">
+      <label for="resume" class="form-label">Resume</label>
+      <input type="text" class="form-control" name='resumeurl' id="resume" aria-describedby="resumeHelp"">
+    <button type="submit" class="btn btn-primary btn-md text-uppercase" style="margin-top: 8px; margin-bottom: 8px">Submit</button>
+  </form>
+  
+</form>
+</div>

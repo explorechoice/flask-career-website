@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="px-4 pt-5 my-5 text-center border-bottom">
+  <h3 class="display-6 fw-bold text-body-emphasis">Application for {{ opening.title }} submitted successfully </h3>
+  <div class="col-lg-6 mx-auto">
+    <p class="lead mb-4">{{data.fullname}}, you can get the update on your email {{ data.email }} once we process the application to next stage. So get ready for amazing journey of this job search</em></p>
+  </div>
+  <div class="overflow-hidden" style="max-height: 40vh;">
+    <div class="container px-5">
+      <img src="{{ url_for('static', filename='musicplayers.jpeg') }}" class="img-fluid border rounded-3 shadow-lg mb-5 bg-body-tertiary" alt="Example image" width="700" height="500" loading="lazy">
+    </div>
+  </div>
+</div>
+{% endblock content %}

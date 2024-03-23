@@ -1,5 +1,5 @@
-from database import load_openings, load_openings_from_db, load_openings_by_id, load_job_from_db
-from flask import Flask, jsonify, render_template
+from database import load_openings, load_openings_from_db, load_openings_by_id, load_job_from_db, store_data_into_db
+from flask import Flask, jsonify, render_template, request
 
 app = Flask(__name__)
 
@@ -53,7 +53,15 @@ def get_job(id):
   openings = load_openings_by_id(id)
   return jsonify(openings)
 
-
+@app.route("/job/<id>/apply", methods=['post'])
+def submit_application(id):
+  opening = load_job_from_db(id)
+  #data = request.args # data form will be submitted as query parameter
+  data = request.form # data form will be submitted as form data
+  # store into db
+  store_data_into_db(id, data)
+  # send email notification
+  return render_template(template_name_or_list='application_submitted.html', data=data, opening=opening)
 
 if __name__ == "__main__":
   app.run(host='0.0.0.0', debug=True)

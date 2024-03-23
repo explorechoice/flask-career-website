@@ -27,13 +27,15 @@
             {% endfor %}
           </ul>
           <!-- <p class="lead">T{{ opening.responsibilities}}</p> -->
+          
         </div>
         <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
             <img class="rounded-lg-3" src="{{ url_for('static', filename='aboutuscareer.jpeg')}}" alt="" width="600">
         </div>
-        <div class="m-auto col-2 p-2 items-center">
-          <a href="mailto:lets.code@yahoo.com?subject={{ opening.title }}&body={{ opening.location }} {{ opening.salary }}" type="button" class=" btn btn-lg text-uppercase" style="background-color:#f72585; color:white">Apply</a>
-        </div>
       </div>
     </div>
+    <div class="container text-center">
+      {% include 'application_form.html' %}
+    </div>
+  </div>
 {% endblock content %}
